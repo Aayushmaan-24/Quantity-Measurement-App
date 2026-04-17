@@ -3,44 +3,49 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class QuantityMeasurementAppTest {
 
-    // 🔹 Feet tests (already exist)
-
     @Test
-    void testFeetEquality_SameValue() {
-        QuantityMeasurementApp.Feet f1 = new QuantityMeasurementApp.Feet(1.0);
-        QuantityMeasurementApp.Feet f2 = new QuantityMeasurementApp.Feet(1.0);
-        assertTrue(f1.equals(f2));
-    }
+    void testEquality_FeetToFeet_SameValue() {
+        Quantity q1 = new Quantity(1.0, LengthUnit.FEET);
+        Quantity q2 = new Quantity(1.0, LengthUnit.FEET);
 
-    // 🔹 NEW: Inches tests
-
-    @Test
-    void testInchEquality_SameValue() {
-        QuantityMeasurementApp.Inch i1 = new QuantityMeasurementApp.Inch(1.0);
-        QuantityMeasurementApp.Inch i2 = new QuantityMeasurementApp.Inch(1.0);
-
-        assertTrue(i1.equals(i2));
+        assertTrue(q1.equals(q2));
     }
 
     @Test
-    void testInchEquality_DifferentValue() {
-        QuantityMeasurementApp.Inch i1 = new QuantityMeasurementApp.Inch(1.0);
-        QuantityMeasurementApp.Inch i2 = new QuantityMeasurementApp.Inch(2.0);
+    void testEquality_InchToInch_SameValue() {
+        Quantity q1 = new Quantity(1.0, LengthUnit.INCH);
+        Quantity q2 = new Quantity(1.0, LengthUnit.INCH);
 
-        assertFalse(i1.equals(i2));
+        assertTrue(q1.equals(q2));
     }
 
     @Test
-    void testInchEquality_NullComparison() {
-        QuantityMeasurementApp.Inch i1 = new QuantityMeasurementApp.Inch(1.0);
+    void testEquality_FeetToInch_Equivalent() {
+        Quantity q1 = new Quantity(1.0, LengthUnit.FEET);
+        Quantity q2 = new Quantity(12.0, LengthUnit.INCH);
 
-        assertFalse(i1.equals(null));
+        assertTrue(q1.equals(q2));
     }
 
     @Test
-    void testInchEquality_SameReference() {
-        QuantityMeasurementApp.Inch i1 = new QuantityMeasurementApp.Inch(1.0);
+    void testEquality_DifferentValues() {
+        Quantity q1 = new Quantity(1.0, LengthUnit.FEET);
+        Quantity q2 = new Quantity(2.0, LengthUnit.FEET);
 
-        assertTrue(i1.equals(i1));
+        assertFalse(q1.equals(q2));
+    }
+
+    @Test
+    void testEquality_NullComparison() {
+        Quantity q1 = new Quantity(1.0, LengthUnit.FEET);
+
+        assertFalse(q1.equals(null));
+    }
+
+    @Test
+    void testEquality_SameReference() {
+        Quantity q1 = new Quantity(1.0, LengthUnit.FEET);
+
+        assertTrue(q1.equals(q1));
     }
 }
