@@ -1,5 +1,6 @@
 public class QuantityMeasurementApp {
 
+    // 🔹 Feet class (existing)
     static class Feet {
         private final double value;
 
@@ -9,18 +10,29 @@ public class QuantityMeasurementApp {
 
         @Override
         public boolean equals(Object obj) {
-
-            // Same reference
             if (this == obj) return true;
-
-            // Null or different class
             if (obj == null || getClass() != obj.getClass()) return false;
 
-            // Type cast
             Feet feet = (Feet) obj;
-
-            // Compare double values safely
             return Double.compare(this.value, feet.value) == 0;
+        }
+    }
+
+    // 🔹 NEW: Inch class
+    static class Inch {
+        private final double value;
+
+        public Inch(double value) {
+            this.value = value;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            if (this == obj) return true;
+            if (obj == null || getClass() != obj.getClass()) return false;
+
+            Inch inch = (Inch) obj;
+            return Double.compare(this.value, inch.value) == 0;
         }
     }
 }
